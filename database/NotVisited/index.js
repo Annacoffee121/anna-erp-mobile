@@ -1,0 +1,1 @@
+export const NOT_VISIT_SCHEMA = "not_visit";

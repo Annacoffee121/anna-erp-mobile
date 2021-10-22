@@ -1,0 +1,5 @@
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const GET_DATE_SUCCESS = 'GET_DATE_SUCCESS';
+export const SEND_FACE_SUCCESS = 'SEND_FACE_SUCCESS';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+export const GOT_USER = 'GOT_USER';

@@ -1,0 +1,51 @@
+{
+  "name": "anna_app",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "escpos-xml": "1.0.0",
+    "lodash": "4.17.10",
+    "moment": "^2.22.2",
+    "native-base": "2.7.2",
+    "prop-types": "15.6.2",
+    "react": "16.4.2",
+    "react-native": "0.56.0",
+    "react-native-bluetooth-serial": "https://github.com/jeylabs/react-native-bluetooth-serial",
+    "react-native-camera": "1.3.0",
+    "react-native-config": "https://github.com/Jayan2018/react-native-config.git",
+    "react-native-datepicker": "1.7.2",
+    "react-native-device-info": "0.22.2",
+    "react-native-dropdownalert": "^3.5.0",
+    "react-native-elements": "0.19.1",
+    "react-native-fontawesome": "5.7.0",
+    "react-native-geolocation-service": "^2.0.0",
+    "react-native-image-picker": "0.27.2",
+    "react-native-keyboard-aware-scroll-view": "^0.7.0",
+    "react-native-maps": "https://github.com/jeylabs/react-native-maps.git",
+    "react-native-maps-directions": "1.6.0",
+    "react-native-material-dropdown": "0.11.1",
+    "react-native-material-textfield": "0.12.0",
+    "react-native-popup-dialog": "0.11.46",
+    "react-native-progress": "3.5.0",
+    "react-native-vector-icons": "6.1.0",
+    "react-navigation": "1.5.8",
+    "react-redux": "5.0.7",
+    "realm": "2.21.1",
+    "redux": "4.0.0",
+    "redux-thunk": "2.3.0",
+    "uuid": "3.3.2"
+  },
+  "devDependencies": {
+    "babel-jest": "23.4.2",
+    "babel-preset-react-native": "5.0.2",
+    "jest": "23.4.2",
+    "react-test-renderer": "^16.4.2"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
