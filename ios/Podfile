@@ -28,6 +28,8 @@ target 'anna_app' do
 
     pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
 
+    pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+
   end
 
   target 'anna_appTests' do
