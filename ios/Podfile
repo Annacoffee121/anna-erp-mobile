@@ -30,6 +30,8 @@ target 'anna_app' do
 
     pod 'react-native-camera', :path => '../node_modules/react-native-camera'
 
+    pod 'react-native-thermal-receipt-printer', :path => '../node_modules/react-native-thermal-receipt-printer'
+
   end
 
   target 'anna_appTests' do

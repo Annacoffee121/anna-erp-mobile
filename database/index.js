@@ -28,13 +28,17 @@ import {ReturnProductsOrderSchema, ReturnProductsSchema} from "./ReturnProducts/
 import {PrinterSchema} from "./Printer/model";
 import {ReturnChequesSchema, ReturnChequesPaymentSchema} from "./ReturnedCheques/model";
 import {PriceBookPricesSchema, PriceBookSchema} from "./PriceBook/model";
+import NetPrinter from "./NetPrinter";
 
-const AllSchema = [RouteSchema, MarkerPointSchema, RouteCustomerSchema, TargetSchema, TargetListSchema,
-    CustomerSchema, ContactPersonSchema, OutstandingSchema, OutstandingOrderSchema,
-    CustomerAddressSchema, BusinessTypeSchema, UnitTypeSchema, NotRealizedChequeSchema,
-    DepositedToSchema, BankSchema, ProductsSchema, OrderSchema, OrderItemSchema, MataSchema, MataAllocationSchema, InvoiceSchema,
-    PaymentSchema, ExpensesSchema, ExpensesTypeSchema, NotVisitSchema, SalesReturnSchema, ReturnItemsSchema, ResolutionsSchema, ReturnChequesPaymentSchema,
-    ReplaceItemsSchema, ReturnProductsSchema, ReturnProductsOrderSchema, PrinterSchema, PriceBookSchema, PriceBookPricesSchema, ReturnChequesSchema];
+const AllSchema = [
+    RouteSchema, MarkerPointSchema, RouteCustomerSchema, TargetSchema, TargetListSchema, CustomerSchema,
+    ContactPersonSchema, OutstandingSchema, OutstandingOrderSchema, CustomerAddressSchema, BusinessTypeSchema,
+    UnitTypeSchema, NotRealizedChequeSchema, DepositedToSchema, BankSchema, ProductsSchema, OrderSchema,
+    OrderItemSchema, MataSchema, MataAllocationSchema, InvoiceSchema, PaymentSchema, ExpensesSchema, ExpensesTypeSchema,
+    NotVisitSchema, SalesReturnSchema, ReturnItemsSchema, ResolutionsSchema, ReturnChequesPaymentSchema,
+    ReplaceItemsSchema, ReturnProductsSchema, ReturnProductsOrderSchema, PrinterSchema, PriceBookSchema,
+    PriceBookPricesSchema, ReturnChequesSchema, NetPrinter
+];
 
 const databaseOptions = {
     path: 'annaApp.realm',

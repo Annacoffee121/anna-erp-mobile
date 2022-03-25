@@ -9,6 +9,7 @@ import invoice from'./invoice';
 import dropdowns from'./dropdowns';
 import settings from'./settings';
 import handover from'./handover';
+import printer from'./printer';
 
 export const appReducer = combineReducers({
     system,
@@ -20,6 +21,7 @@ export const appReducer = combineReducers({
     dropdowns,
     settings,
     handover,
+    printer,
 });
 
 export const rootReducer = (state, action) => {

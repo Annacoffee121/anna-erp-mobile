@@ -3,6 +3,7 @@ package com.anna_app;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.pinmi.react.printer.RNPrinterPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.agontuk.RNFusedLocation.RNFusedLocationPackage;
@@ -32,6 +33,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new RNPrinterPackage(),
           new RNCameraPackage(),
           new RNFusedLocationPackage(),
             new ReactNativeConfigPackage(),

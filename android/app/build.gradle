@@ -150,6 +150,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-thermal-receipt-printer')
     compile (project(':react-native-camera')) {
             exclude group: "com.google.android.gms"
             compile ('com.google.android.gms:play-services-vision:+') {

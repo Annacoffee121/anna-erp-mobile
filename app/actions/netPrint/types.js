@@ -1,0 +1,2 @@
+
+export const NET_PRINTER_GET = 'NET_PRINTER_GET';

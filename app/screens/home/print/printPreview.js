@@ -7,6 +7,7 @@ import ScreenHeader from '../../../components/textHeader';
 import moment from "moment/moment";
 import {transformToCurrency} from "../../../helpers/currencyFormatConverter";
 import BluetoothSerial from 'react-native-bluetooth-serial'
+import NetPrinter from "../NetPrint/API";
 import {buffer} from './view'
 
 import {showMessage} from "../../../helpers/toast";
@@ -52,12 +53,15 @@ export default class PrintPreview extends Component {
                     leftButtonPress={this.handelHeaderLeftButtonPress.bind(this)}
                     rightButtonValue='Print'
                     rightButtonPress={() => {
-                        this.setState({isLoading: true, loadingText: 'Validating printer connection!'});
-                        BluetoothSerial.isConnected().then(isConnected => {
-                            this.setState({isLoading: false, loadingText: null});
-                            if (!isConnected) return showMessage('Printer is not connected. Please check!');
-                            this.handelHeaderRightButtonPress();
-                        })
+
+                        this.handelHeaderRightButtonPress();
+                        // this.setState({isLoading: true, loadingText: 'Validating printer connection!'});
+                        // BluetoothSerial.isConnected().then(isConnected => {
+                        //     this.setState({isLoading: false, loadingText: null});
+                        //     this.handelHeaderRightButtonPress();
+                        //
+                        //     if (!isConnected) return showMessage('Printer is not connected. Please check!');
+                        // })
                     }}
                 />
                 <Content>
@@ -509,8 +513,19 @@ export default class PrintPreview extends Component {
     }
 
     printBill(count) {
-        BluetoothSerial.write(buffer(this.state.printData, count, this.state.previousCollection,
-            this.state.out_value, this.state.companyDetails, this.state.receipt_mode, this.state.not_realized_cheque));
+        NetPrinter.printText(
+            buffer(
+                this.state.printData,
+                count,
+                this.state.previousCollection,
+                this.state.out_value,
+                this.state.companyDetails,
+                this.state.receipt_mode,
+                this.state.not_realized_cheque
+            )
+        );
+        // BluetoothSerial.write(buffer(this.state.printData, count, this.state.previousCollection,
+        //     this.state.out_value, this.state.companyDetails, this.state.receipt_mode, this.state.not_realized_cheque));
     }
 
     setOrderPrintStatus() {
