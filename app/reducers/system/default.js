@@ -103,6 +103,6 @@ export default {
          */
         forgotText:'Forgot Password?',
         footerText: '©2019 AnnA Industry, All rights reserved.',
-        versionText: 'V 1.0.4',
+        versionText: 'V 1.0.5',
     }
 };
