@@ -5,11 +5,10 @@ import styles from "./styles";
 import ScreenHeader from '../../../components/textHeader';
 import moment from "moment/moment";
 import {transformToCurrency} from "../../../helpers/currencyFormatConverter";
-import BluetoothSerial from 'react-native-bluetooth-serial'
 import {buffer} from './view'
-import {showMessage} from "../../../helpers/toast";
 import Spinner from "../../../components/spinner";
 import {changePaymentPrintStatus} from "../../../services/returnCheque/printStatus";
+import NetPrinterAPI from "../../../helpers/NetPrinterAPI";
 
 export default class PrintPreview extends Component {
     constructor(props, context) {
@@ -31,12 +30,7 @@ export default class PrintPreview extends Component {
                     leftButtonPress={() => this.props.navigation.goBack()}
                     rightButtonValue='Print'
                     rightButtonPress={() => {
-                        this.setState({isLoading: true, loadingText: 'Validating printer connection!'});
-                        BluetoothSerial.isConnected().then(isConnected => {
-                            this.setState({isLoading: false, loadingText: null});
-                            if (!isConnected) return showMessage('Printer is not connected. Please check!');
-                            this.handelHeaderRightButtonPress();
-                        })
+                        this.handelHeaderRightButtonPress();
                     }}
                 />
                 <Content>
@@ -192,7 +186,7 @@ export default class PrintPreview extends Component {
 
     printBill() {
         const {companyDetails, printData} = this.props.navigation.state.params;
-        BluetoothSerial.write(buffer(printData, companyDetails));
+        NetPrinterAPI.printText(buffer(printData, companyDetails));
     }
 
     async setOrderPrintStatus() {

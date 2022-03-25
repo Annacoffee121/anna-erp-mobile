@@ -5,10 +5,10 @@ import styles from "./styles";
 import ScreenHeader from '../../../components/textHeader';
 import moment from "moment/moment";
 import {transformToCurrency} from "../../../helpers/currencyFormatConverter";
-import BluetoothSerial from 'react-native-bluetooth-serial'
 import {buffer} from './view'
 import Spinner from "../../../components/spinner";
 import {showMessage} from "../../../helpers/toast";
+import NetPrinterAPI from "../../../helpers/NetPrinterAPI";
 
 export default class DeliveryNotePreview extends Component {
     constructor(props, context) {
@@ -136,7 +136,8 @@ export default class DeliveryNotePreview extends Component {
 
     handelHeaderRightButtonPress() {
         if (this.state.printData.is_order_printed === 'Yes') return showMessage('Sorry, This bill is already printed');
-        BluetoothSerial.write(buffer(this.state.printData, this.state.companyDetails));
+
+        NetPrinterAPI.printText(buffer(this.state.printData, this.state.companyDetails));
         setTimeout(() => {
             this.props.navigation.pop(2)
         }, 500)

@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
 import {Container, Content} from 'native-base';
-import BluetoothSerial from 'react-native-bluetooth-serial'
 import {Button, ListItem} from 'react-native-elements'
 import Spinner from '../../../../../../components/spinner/index';
 import ScreenHeader from '../../../../../../components/textHeader';
-import {showMessage} from '../../../../../../helpers/toast'
 import styles from './styles';
 import {connect} from "react-redux";
 import {getCustomerFromRealm} from "../../../../../../actions/customer";
 import {getSalesReturnDataFromRealm} from "../../../../../../actions/returns";
+import NetPrint from "../../../../NetPrint";
 
 class SalesReturnPrinterPage extends Component {
     constructor() {
@@ -26,10 +25,6 @@ class SalesReturnPrinterPage extends Component {
     componentWillMount() {
         this.setState({isLoading: true});
         this.loadRemoteCustomers();
-
-        BluetoothSerial.list().then(printers => {
-            this.setState({printers: printers})
-        });
     }
 
     loadRemoteCustomers(callback) {
@@ -47,26 +42,23 @@ class SalesReturnPrinterPage extends Component {
         });
     }
 
-    //To Connect printer
-    connectPrinter(id) {
-        this.setState({isLoading: true});
-        BluetoothSerial.connect(id).then(
-            (printer) => {
-                this.setState({currentPrinter: printer, isLoading: false, disablePrint: false});
-                showMessage(printer.message);
-            },
-            (error) => {
-                showMessage(error.message);
-                this.setState({isLoading: false, disablePrint: true})
-            });
-    }
-
     handelHeaderLeftButtonPress() {
         this.props.navigation.goBack();
     }
 
     render() {
         let {configurations} = this.props.screenProps.system;
+
+        return (
+            <NetPrint
+                screenHeader={{
+                    leftButtonPress: this.handelHeaderLeftButtonPress.bind(this)
+                }}
+                onPrintPress={this.handelPrintPress}
+                isLoading={this.state.isLoading}
+            />
+        );
+
         return (
             <Container style={styles.container}>
                 <ScreenHeader name='Select Printer'

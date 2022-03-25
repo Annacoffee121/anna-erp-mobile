@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native'
 import {Container, Content} from 'native-base';
-import {NavigationActions} from 'react-navigation'
 import styles from "./styles";
 import ScreenHeader from '../../../components/textHeader';
 import moment from "moment/moment";
 import {transformToCurrency} from "../../../helpers/currencyFormatConverter";
-import BluetoothSerial from 'react-native-bluetooth-serial'
-import NetPrinter from "../NetPrint/API";
+import NetPrinterAPI from "../../../helpers/NetPrinterAPI";
 import {buffer} from './view'
 
 import {showMessage} from "../../../helpers/toast";
@@ -53,15 +51,7 @@ export default class PrintPreview extends Component {
                     leftButtonPress={this.handelHeaderLeftButtonPress.bind(this)}
                     rightButtonValue='Print'
                     rightButtonPress={() => {
-
                         this.handelHeaderRightButtonPress();
-                        // this.setState({isLoading: true, loadingText: 'Validating printer connection!'});
-                        // BluetoothSerial.isConnected().then(isConnected => {
-                        //     this.setState({isLoading: false, loadingText: null});
-                        //     this.handelHeaderRightButtonPress();
-                        //
-                        //     if (!isConnected) return showMessage('Printer is not connected. Please check!');
-                        // })
                     }}
                 />
                 <Content>
@@ -513,7 +503,7 @@ export default class PrintPreview extends Component {
     }
 
     printBill(count) {
-        NetPrinter.printText(
+        NetPrinterAPI.printText(
             buffer(
                 this.state.printData,
                 count,
@@ -524,8 +514,6 @@ export default class PrintPreview extends Component {
                 this.state.not_realized_cheque
             )
         );
-        // BluetoothSerial.write(buffer(this.state.printData, count, this.state.previousCollection,
-        //     this.state.out_value, this.state.companyDetails, this.state.receipt_mode, this.state.not_realized_cheque));
     }
 
     setOrderPrintStatus() {
