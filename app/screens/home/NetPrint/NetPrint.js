@@ -8,7 +8,7 @@ import styles from "./styles";
 import {Button} from "react-native-elements";
 import Spinner from "../../../components/spinner";
 import {addOrUpdatePrinter, getNetPrinter} from "../../../actions/netPrint/NetPrinterAction";
-import NetPrinter from "./API";
+import NetPrinterAPI from "../../../helpers/NetPrinterAPI";
 import {ID} from "../../../helpers/createId";
 import {showMessage} from "../../../helpers/toast";
 
@@ -38,7 +38,7 @@ class NetPrint extends PureComponent {
 
         if (onMount) onMount();
 
-        NetPrinter.init().then(() => {
+        NetPrinterAPI.init().then(() => {
             this.setState({isLoading: false});
         });
     }
@@ -65,7 +65,7 @@ class NetPrint extends PureComponent {
 
     deviceConnect = (printer, successCallback, errorCallback) => {
         this.changeLoading(true, () => {
-            NetPrinter.connectPrinter(printer.ip, printer.port * 1).then(() => {
+            NetPrinterAPI.connectPrinter(printer.ip, printer.port * 1).then(() => {
                 if (successCallback) successCallback();
 
                 this.setState({printerReady: true});
